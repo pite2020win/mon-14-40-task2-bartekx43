@@ -44,7 +44,7 @@ class Airplane:
     self.yaw -= rate_of_correction*(self.expected_yaw-self.yaw)
     
 
-airplane = Airplane(0, 15, 0)
+airplane = Airplane(0, 0, 0)
 
 while True:
   roll_turbulance = random.random()
@@ -55,12 +55,16 @@ while True:
   print("Current parameters:\nroll: {} (expected: {})\npitch: {} (expected: {})\nyaw: {} (expected: {})\n".format(
     airplane.roll, airplane.expected_roll, airplane.pitch, airplane.expected_pitch, airplane.yaw, airplane.expected_yaw
   ))
-  airplane.correct_parameters(0.5)
+
+  rate_of_correction = random.random()
+  airplane.correct_parameters(rate_of_correction)
   print ("Correction done\n")
 
-  if (airplane.pitch < 0):
+  if (airplane.pitch > 5):
     print ("Plane crashed")
     break
+
+  
   
     
 
